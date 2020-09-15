@@ -1,11 +1,12 @@
-import pandas_datareader.data as web
-import datetime
-start = datetime.datetime(2018,1,1)
-end = datetime.datetime(2020,1,1)
-BTC = web.DataReader("FB","yahoo",start,end)
-print(BTC.head())
-import quandl
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
-btc = quandl.get("WIKI/AAPl.1")
-btc.plot()
-plt.show()
+from datetime import datetime
+my_year = 2001
+my_month = 6
+my_day = 26
+my_hour = 18
+my_minute = 26
+my_second = 30
+my_date = datetime(my_year,my_month,my_day,my_hour,my_minute,my_second)
+print(my_date)
