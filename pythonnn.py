@@ -16,5 +16,15 @@ from datetime import datetime
 
 # print(df.resample("A").max())
 df = pd.read_csv("walmart_stock.csv",index_col="Date",parse_dates=True)
-df = df.shift(periods=-1)
-print(df.tail())
+# df = df.shift(periods=-1)
+# print(df.tail())
+# df = pd.read_csv("walmart_stock.csv", index_col="Date" , parse_dates=True)
+# df.rolling(window=90).mean()["Open"].plot(figsize=(16,3))
+# plt.show()
+
+#-----------boolenger indicator---------#
+df["Close: 20 day mean"] = df["Close"].rolling(20).mean()
+df["Upper"] = df["Close: 20 day mean"] + 2*(df["Close"].rolling(20).std())
+df["Lower"] = df["Close: 20 day mean"] - 2*(df["Close"].rolling(20).std())
+df[["Close","Close: 20 day mean","Upper","Lower"]].tail(300).plot(figsize=(16,6))
+plt.show()
